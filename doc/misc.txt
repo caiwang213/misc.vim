@@ -1,0 +1,198 @@
+*misc.txt*   my plugin user manual
+
+==============================================================================
+INTRODUCTION                                                             *misc*
+
+This plugin is a front for the_silver_searcher: my. Ag can be used as a
+replacement for ack. This plugin will allow you to run my from vim, and shows
+the results in a split window.
+
+|misc-view|
+|misc-view-vim|
+|misc-view-NERDTree|
+|misc-view-airline|
+|misc-buffer|
+|misc-buffer-vim|
+|misc-buffer-ctrlp|
+|misc-buffer-mru|
+|misc-buffer-bufexplorer|
+|misc-buffer-rename|
+|misc-move|
+|misc-move-vim|
+|misc-search|
+|misc-search-incsearch|
+|misc-search-sneak|
+|msic-search-surround|
+|misc-complete|
+|misc-complete-ycm|
+|misc-complete-ultisnips|
+|misc-complete-snippets|
+|misc-complete-autoclose|
+|misc-select|
+|misc-select-multiple-cursors|
+|misc-select-expand-region|
+|misc-format|
+|misc-format-autoformat|
+|misc-format-easy-align|
+|misc-comment|
+|misc-comment-commentary|
+|misc-git|
+|misc-git-gitgtter|
+|misc-git-fugitive|
+|misc-git-git|
+|misc-repeat|
+
+
+
+
+
+                                                                          *misc-view*
+                                                                      *misc-view-vim*
+                                                                 *misc-view-NERDTree*
+                                                                  *misc-view-airline*
+
+
+                                                                        *misc-buffer*
+                                                                    *misc-buffer-vim*
+    map <leader>bd :Bclose<cr>:tabclose<cr>gT  " Close the current buffer
+    map <leader>ba :bufdo bd<cr>               " Close all the buffers
+    map <leader>bn :bnext<cr>
+    map <leader>bp :bprevious<cr>
+    map <leader>bf :bfirst<cr>
+    map <leader>bl :blast<cr>
+
+                                                                  *misc-buffer-ctrlp*
+    Maps:                                                                  
+    let g:ctrlp_map = '<c-f>'
+    map <c-b> :CtrlPBuffer<cr> 
+    <c-d>                               
+        Toggle between full-path search and filename only search.
+    <c-r>                               
+        Toggle between the string mode and full regexp mode.
+    <tab>
+        Auto-complete directory names under the current working directory inside the prompt.
+    <esc>, <c-c>, <c-g>
+        Exit CtrlP.
+
+    Moving:
+    <c-j>, <down>                       " Move selection down.
+    <c-k>, <up>                         " Move selection up.
+
+    <c-a>                               " Move the cursor to the 'start' of the prompt.
+    <c-e>                               " Move the cursor to the 'end' of the prompt.
+
+    <c-h>, <left>, <c-^>                " Move the cursor one character to the 'left'. NOTE: secureCRT map <c-h> to <backspace>
+    <c-l>, <right>                      " Move the cursor one character to the 'right'.
+
+    Editing:
+    <c-w>                               " Delete a preceding inner word.
+    <c-u>                               " Clear the input field.
+
+    Browsing input history:
+    <c-n>                               " Next string in the prompt's history.
+    <c-p>                               " Previous string in the prompt's history.
+
+    Opening/Creating a file:
+    <cr>                                " Open the selected file in the 'current' window if possible.
+    <c-t>                               " Open the selected file in a new 'tab'.
+    <c-v>                               " Open the selected file in a 'vertical' split.
+    <c-x>, <c-cr>, <c-s>                " Open the selected file in a 'horizontal' split.
+    <c-y>                               " Create a new file and its parent directories.
+    <F5>
+        - Refresh the match window and purge the cache for the current directory.
+        - Remove deleted files from the MRU list.
+    <F7>
+        MRU mode:
+        - Wipe the list.
+        - Delete entries marked by <c-z>.
+        Buffer mode:
+        - Delete entry under the cursor or delete multiple entries marked by <c-z>.
+
+                                                                    *misc-buffer-mru*
+                                                            *misc-buffer-bufexplorer*
+                                                                 *misc-buffer-rename*
+                                                                          *misc-move*
+
+
+                                                                      *misc-move-vim*
+    [移动]
+        w
+        b
+        e
+        ge
+        $,n$
+        fx,nfx 右移动到指定的字符X上
+        Fx,nFx 左移动到指定的字符X上
+        ngg,ng
+        H,M,L			"h"意为Home,Middle,Last	
+        ^				将光标移动到行首
+        0				将光标移动到行首(顶格)
+        CTRL-G			告诉你当前的位置
+        ``				两点之间来回跳转
+        CTRL-O			跳转到更早时间光标的位置
+        CTRL-I,<tab>	跳回到后来的更新的位置
+        CTRL-]			转到当前光标之下的那个word所对应的链接中(查看help时)
+        CTRL-T			(弹出标签)可以回到前一个位置,CTRL-O(跳转到较早的位置)也可以
+        '1				回到你上次退出时的位置
+
+    [在代码块中移动]
+        %				匹配一个括号      (#ifdef #else #endif)之间跳转
+        [#				在"#if"-"#endif"结构的中间某个地方时,跳转到此结构的结束元素
+        ]#				在"#if"-"#endif"结构的中间某个地方时,跳转到此结构的开始元素
+        [[				移动到一个代码块的开头
+        ][				移动到一个代码块的末尾
+        [{				跳转到当前代码块的开头
+        ]}				跳转到当前代码块的末尾
+        []				查找上一个函数的结尾
+        ]]				查找下一个函数的开始
+
+    [注释内的移动]
+        [/				移动到注释的开头(这只对/* -       */形式的注释有效)
+        ]/				移动到注释的末尾
+
+                                                                        *misc-search*
+                                                              *misc-search-incsearch*
+
+                                                                  *misc-search-sneak*
+
+    Key Sequence             | Description
+    -------------------------|----------------------------------------------
+    s{char}{char}            | Go to the next occurrence of {char}{char}
+    S{char}{char}            | Go to the previous occurrence of {char}{char}
+    s{char}<Enter>           | Go to the next occurrence of {char}
+    S{char}<Enter>           | Go to the previous occurrence of {char}
+    s<Enter>                 | Repeat the last Sneak.
+    S<Enter>                 | Repeat the last Sneak, in reverse direction.
+    ;                        | Go to the [count]th next match
+    , or \                   | Go to the [count]th previous match
+    s                        | Go to the [count]th next match (see NOTE)
+    S                        | Go to the [count]th previous match (see NOTE)
+    [count]s{char}{char}     | Invoke |sneak-vertical-scope|
+    [count]S{char}{char}     | Invoke backwards |sneak-vertical-scope|
+    {operator}z{char}{char}  | Perform {operator} from the cursor to the next
+                             | occurrence of {char}{char}
+    {operator}Z{char}{char}  | Perform {operator} from the cursor to the 
+                             | previous occurrence of {char}{char}
+                                                               *msic-search-surround*
+                                                                      *misc-complete*
+                                                                  *misc-complete-ycm*
+                                                            *misc-complete-ultisnips*
+                                                             *misc-complete-snippets*
+                                                            *misc-complete-autoclose*
+                                                                        *misc-select*
+                                                       *misc-select-multiple-cursors*
+                                                          *misc-select-expand-region*
+                                                                        *misc-format*
+                                                             *misc-format-autoformat*
+                                                             *misc-format-easy-align*
+
+                                                                       *misc-comment*
+                                                            *misc-comment-commentary*
+
+                                                                           *misc-git*
+                                                                  *misc-git-gitgtter*
+                                                                  *misc-git-fugitive*
+                                                                       *misc-git-git*
+
+                                                                        *misc-repeat*
+                                                      vim:tw=78:fo=tcq2:ft=help:norl:
