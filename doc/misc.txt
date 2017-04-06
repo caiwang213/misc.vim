@@ -62,7 +62,7 @@ the results in a split window.
     map <leader>bl :blast<cr>
 
                                                                   *misc-buffer-ctrlp*
-    Maps:                                                                  
+    |Maps:|                                                                  
     let g:ctrlp_map = '<c-f>'
     map <c-b> :CtrlPBuffer<cr> 
     <c-d>                               
@@ -74,29 +74,44 @@ the results in a split window.
     <esc>, <c-c>, <c-g>
         Exit CtrlP.
 
-    Moving:
-    <c-j>, <down>                       " Move selection down.
-    <c-k>, <up>                         " Move selection up.
+    |Moving:|
+    <c-j>, <down>
+        Move selection down.
+    <c-k>, <up>
+        Move selection up.
 
-    <c-a>                               " Move the cursor to the 'start' of the prompt.
-    <c-e>                               " Move the cursor to the 'end' of the prompt.
+    <c-a>
+        Move the cursor to the 'start' of the prompt.
+    <c-e>
+        Move the cursor to the 'end' of the prompt.
 
-    <c-h>, <left>, <c-^>                " Move the cursor one character to the 'left'. NOTE: secureCRT map <c-h> to <backspace>
-    <c-l>, <right>                      " Move the cursor one character to the 'right'.
+    <c-h>, <left>, <c-^>
+        Move the cursor one character to the 'left'. 
+        NOTE: secureCRT map <c-h> to <backspace>
+    <c-l>, <right>
+        Move the cursor one character to the 'right'.
 
-    Editing:
-    <c-w>                               " Delete a preceding inner word.
-    <c-u>                               " Clear the input field.
+    |Editing:|
+    <c-w>
+        Delete a preceding inner word.
+    <c-u>
+        Clear the input field.
 
     Browsing input history:
-    <c-n>                               " Next string in the prompt's history.
-    <c-p>                               " Previous string in the prompt's history.
+    <c-n>
+        Next string in the prompt's history.
+    <c-p>
+        Previous string in the prompt's history.
 
-    Opening/Creating a file:
-    <cr>                                " Open the selected file in the 'current' window if possible.
-    <c-t>                               " Open the selected file in a new 'tab'.
-    <c-v>                               " Open the selected file in a 'vertical' split.
-    <c-x>, <c-cr>, <c-s>                " Open the selected file in a 'horizontal' split.
+    |Opening/Creating-file:|
+    <cr>
+        Open the selected file in the 'current' window if possible.
+    <c-t>
+        Open the selected file in a new 'tab'.
+    <c-v>
+        Open the selected file in a 'vertical' split.
+    <c-x>, <c-cr>, <c-s>
+        Open the selected file in a 'horizontal' split.
     <c-y>                               " Create a new file and its parent directories.
     <F5>
         - Refresh the match window and purge the cache for the current directory.
@@ -115,7 +130,7 @@ the results in a split window.
 
 
                                                                       *misc-move-vim*
-    [移动]
+     
         w
         b
         e
@@ -135,7 +150,7 @@ the results in a split window.
         CTRL-T			(弹出标签)可以回到前一个位置,CTRL-O(跳转到较早的位置)也可以
         '1				回到你上次退出时的位置
 
-    [在代码块中移动]
+    |in-code-bolcok|
         %				匹配一个括号      (#ifdef #else #endif)之间跳转
         [#				在"#if"-"#endif"结构的中间某个地方时,跳转到此结构的结束元素
         ]#				在"#if"-"#endif"结构的中间某个地方时,跳转到此结构的开始元素
@@ -146,7 +161,7 @@ the results in a split window.
         []				查找上一个函数的结尾
         ]]				查找下一个函数的开始
 
-    [注释内的移动]
+   |in-comment| 
         [/				移动到注释的开头(这只对/* -       */形式的注释有效)
         ]/				移动到注释的末尾
 
@@ -157,18 +172,18 @@ the results in a split window.
 
     Key Sequence             | Description
     -------------------------|----------------------------------------------
-    s{char}{char}            | Go to the next occurrence of {char}{char}
-    S{char}{char}            | Go to the previous occurrence of {char}{char}
-    s{char}<Enter>           | Go to the next occurrence of {char}
-    S{char}<Enter>           | Go to the previous occurrence of {char}
-    s<Enter>                 | Repeat the last Sneak.
-    S<Enter>                 | Repeat the last Sneak, in reverse direction.
+    f{char}{char}            | Go to the next occurrence of {char}{char}
+    F{char}{char}            | Go to the previous occurrence of {char}{char}
+    f{char}<Enter>           | Go to the next occurrence of {char}
+    F{char}<Enter>           | Go to the previous occurrence of {char}
+    f<Enter>                 | Repeat the last Sneak.
+    F<Enter>                 | Repeat the last Sneak, in reverse direction.
     ;                        | Go to the [count]th next match
     , or \                   | Go to the [count]th previous match
-    s                        | Go to the [count]th next match (see NOTE)
-    S                        | Go to the [count]th previous match (see NOTE)
-    [count]s{char}{char}     | Invoke |sneak-vertical-scope|
-    [count]S{char}{char}     | Invoke backwards |sneak-vertical-scope|
+    f                        | Go to the [count]th next match (see NOTE)
+    F                        | Go to the [count]th previous match (see NOTE)
+    [count]f{char}{char}     | Invoke |sneak-vertical-scope|
+    [count]F{char}{char}     | Invoke backwards |sneak-vertical-scope|
     {operator}z{char}{char}  | Perform {operator} from the cursor to the next
                              | occurrence of {char}{char}
     {operator}Z{char}{char}  | Perform {operator} from the cursor to the 
