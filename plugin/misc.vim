@@ -1,4 +1,4 @@
-function!! Clean()
+function! Clean()
 	let bufnu=bufnr("%")
 	let bufname=bufname(bufnu)
 	let cwdname=getcwd()."/"
