@@ -161,7 +161,7 @@ the results in a split window.
         []				查找上一个函数的结尾
         ]]				查找下一个函数的开始
 
-   |in-comment| 
+    |in-comment| 
         [/				移动到注释的开头(这只对/* -       */形式的注释有效)
         ]/				移动到注释的末尾
 
@@ -199,14 +199,61 @@ the results in a split window.
                                                           *misc-select-expand-region*
                                                                         *misc-format*
                                                              *misc-format-autoformat*
+
+    noremap <F3> :Autoformat<CR>
+    " au BufWrite * :Autoformat
+    " let g:autoformat_autoindent = 0
+    " let g:autoformat_retab = 0
+    " let g:autoformat_remove_trailing_spaces = 1
+    let |g:autoformat_verbosemode| = 1
+
+    " nead install astyle
+    let |g:formatdef_cxx|  = '"astyle --style=allman --pad-oper --break-blocks --pad-header --add-braces"'
+    let |g:formatters_cpp| = ['cxx']
+    let |go:formatters_c|   = ['cxx']
+
                                                              *misc-format-easy-align*
+    xmap ga <Plug>(EasyAlign)  
+        Start interactive EasyAlign in visual mode (e.g. vipga)
+    
+    nmap ga <Plug>(EasyAlign)  
+        Start interactive EasyAlign for a motion/text object (e.g. gaip)
+    
+    vmap _  :EasyAlig*\<cr>
+        General alignment around whitespaces
+    
+    vmap +  :EasyAlign*=<cr>
+        Operators containing equals sign (=, ==, !=, +=, &&=, ...)
+    
+    vmap ,  :EasyAlign*,<cr>
+        Multi-line method arguments
+    
+    vmap &  :EasyAlign*&<cr>
+        LaTeX tables (matches & and \\)
+    
+    vmap .  :EasyAlign*.<cr>
 
                                                                        *misc-comment*
                                                             *misc-comment-commentary*
 
                                                                            *misc-git*
                                                                   *misc-git-gitgtter*
+    let g:gitgutter_sign_column_always = 1
+    :GitGutterDisable 
+        Explicitly turn Git Gutter off.
+    
+    :GitGutterEnable
+        Explicitly turn Git Gutter on.
+    
+    :GitGutterToggle
+        Explicitly turn Git Gutter on if it was off and vice versa.
+    
+    :GitGutter
+      Update signs for the current buffer.
+
                                                                   *misc-git-fugitive*
+    :Gstatus 
+        Bring up the output of git-status in the preview
                                                                        *misc-git-git*
 
                                                                         *misc-repeat*
