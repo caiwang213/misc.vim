@@ -192,7 +192,40 @@ the results in a split window.
                                                                       *misc-complete*
                                                                   *misc-complete-ycm*
                                                             *misc-complete-ultisnips*
-                                                             *misc-complete-snippets*
+
+>
+    let g:UltiSnipsExpandTrigger="<c-l>"
+    let g:UltiSnipsJumpForwardTrigger="<c-j>"
+    let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+<
+    " If you want :UltiSnipsEdit to split your window.
+>
+    let g:UltiSnipsEditSplit="vertical"
+<     
+
+    snippet  value
+
+    def      "#define"
+    #ifndef  "ifndef      ...        #define  ... #endif"
+    #if      "#if         #endif"
+    main     "int         main()     {        ... return 0}"
+    for      "for         (...)"
+    once     "#ifndef     ...        #definde ..."
+    fprintf  "fprintf(    stderr,    "%s\n",  );"
+    printf   "printf(     "%s\n",    );"
+    beginend "v.begin,    v.end()"
+    cl       "class       ...        {        ... }"
+    cla      "#ifndef     ...        class    ... {      ... }"
+    ns       "namespace   ..."
+    vector   "std::vector v;"
+    tp       "template    <typename> ..."
+
+
+
+                                                         *misc-complete-snippets*
+
+    " the snippet source for ultisnips                                                             
+
                                                             *misc-complete-autoclose*
                                                                         *misc-select*
                                                        *misc-select-multiple-cursors*
@@ -213,48 +246,131 @@ the results in a split window.
     let |go:formatters_c|   = ['cxx']
 
                                                              *misc-format-easy-align*
-    xmap ga <Plug>(EasyAlign)  
+    xmap ga <Plug>(|EasyAlign|)  
         Start interactive EasyAlign in visual mode (e.g. vipga)
     
-    nmap ga <Plug>(EasyAlign)  
+    nmap ga <Plug>(|EasyAlign|)  
         Start interactive EasyAlign for a motion/text object (e.g. gaip)
     
-    vmap _  :EasyAlig*\<cr>
+    vmap _  :|EasyAlig|*\<cr>
         General alignment around whitespaces
     
-    vmap +  :EasyAlign*=<cr>
+    vmap +  :|EasyAlign|*=<cr>
         Operators containing equals sign (=, ==, !=, +=, &&=, ...)
     
-    vmap ,  :EasyAlign*,<cr>
+    vmap ,  :||EasyAlign||*,<cr>
         Multi-line method arguments
     
-    vmap &  :EasyAlign*&<cr>
+    vmap &  :|EasyAlign|*&<cr>
         LaTeX tables (matches & and \\)
     
-    vmap .  :EasyAlign*.<cr>
+    vmap .  :|EasyAlign|*.<cr>
 
                                                                        *misc-comment*
                                                             *misc-comment-commentary*
 
                                                                            *misc-git*
                                                                   *misc-git-gitgtter*
+>
     let g:gitgutter_sign_column_always = 1
-    :GitGutterDisable 
+<
+To change the hunk-jumping maps (defaults shown):
+>
+    nmap [c <Plug>GitGutterPrevHunk
+    nmap ]c <Plug>GitGutterNextHunk
+<
+
+To change the hunk-staging/undoing/previewing maps (defaults shown):
+>
+    nmap <Leader>hs <Plug>GitGutterStageHunk
+    nmap <Leader>hu <Plug>GitGutterUndoHunk
+    nmap <Leader>hp <Plug>GitGutterPreviewHunk
+<
+    :|GitGutterDisable| 
         Explicitly turn Git Gutter off.
     
-    :GitGutterEnable
+    :|GitGutterEnable|
         Explicitly turn Git Gutter on.
     
-    :GitGutterToggle
+    :|GitGutterToggle|
         Explicitly turn Git Gutter on if it was off and vice versa.
     
-    :GitGutter
-      Update signs for the current buffer.
+    :|GitGutter|
+        Update signs for the current buffer.
+
+    :|GitGutterNextHunk|
+        Jump to the next marked hunk.  Takes a count.
+
+    :|GitGutterPrevHunk|
+        Jump to the previous marked hunk.  Takes a count.
+        Commands for staging or undoing individual hunks:
+
+    :|GitGutterStageHunk|
+        Stage the hunk the cursor is in.
+
+    :|GitGutterUndoHunk|
+        Undo the hunk the cursor is in.
 
                                                                   *misc-git-fugitive*
-    :Gstatus 
+    :|Gstatus| 
         Bring up the output of git-status in the preview
-                                                                       *misc-git-git*
+
+    :|Gsdiff| [revision]      Like |:Gdiff|, but always split horizontally.
+
+
+                                                                      *misc-git-gitv*
+    Mode        Map     Description~
+
+    normal      <cr>      Opens a commit. In browser mode this will show the
+                          commit header information including the commit
+                          message. It will also display a full diff showing all the
+                          changes to files.
+
+                          Tip: if you press <cr> on anything sensible you can
+                          view the expected output. For example pressing <cr> on
+                          the line beginning a file diff, it will display the
+                          diff using Vim's built in diff viewing capability.
+                          Pressing <cr> on the tree sha will list all the files
+                          in the commit and pressing <cr> on one of these will
+                          show that file as it was in the commit. And so on.
+
+                          Pressing <cr> on the line "-- Load More --" will load
+                          |g:Gitv_CommitStep| more commits.
+
+                          In file mode this will open the focused file as it was
+                          in the currently selected diff. This allows you to
+                          easily go back in time and look at the focused file.
+
+                          Pressing <cr> on the top line in file mode opens the
+                          current working copy of the focused file.
+
+    normal      <c-n>     In either browser or file mode, this moves down to
+                          the next commit and opens it. This allows you to
+                          quickly move from commit to commit and view either
+                          the commit details or the file itself, depending on
+                          the mode, in one action.
+
+    normal      <c-p>     The same as <c-n> but move back a commit.
+
+    normal      o         The same as <cr> but opens in a new |split|.
+                <c-j>
+    normal      O         The same as <cr> but opens in a new |tab|.
+                <c-l>
+    normal      s         The same as <cr> but opens in a new |vsplit|.
+                <c-k>
+
+    normal      gw         Switch between the preview window and browser.
+
+    normal      i         This performs the same thing as <cr> in browser mode.
+                <c-cr>    In file mode it opens the commit details rather than
+                          the focused file. (NOTE: many terminal emulators do
+                          not support <c-cr>).
+
+    normal      q         Quits gitv. In browser mode this will close the entire
+                          tab. In file mode this closes only the |preview-window|.
+                          Note: in browser mode this will close the tab
+                          regardless of any windows you may have opened as well
+                          as the gitv windows.
 
                                                                         *misc-repeat*
                                                       vim:tw=78:fo=tcq2:ft=help:norl:
