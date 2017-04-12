@@ -192,6 +192,13 @@ the results in a split window.
                                                                *msic-search-surround*
                                                                       *misc-complete*
                                                                   *misc-complete-ycm*
+>
+    map <leader>gd :YcmCompleter GoToDeclaration<cr>
+    map <leader>gg :YcmCompleter GoToDefinition<cr>
+    map <leader>gi :YcmCompleter GoToInclude<cr>
+    map <leader>gf :YcmCompleter FixIt<cr>
+    map <leader>ge :YcmDiags<cr>
+<
 
                                                             *misc-complete-ultisnips*
 >
@@ -504,8 +511,18 @@ the results in a split window.
 
 
                                                             *misc-complete-autoclose*
+
                                                                         *misc-select*
+
                                                        *misc-select-multiple-cursors*
+>
+>
+>
+    let g:multi_cursor_start_key = "g<c-j>"
+    let g:multi_cursor_next_key  = "<c-j>"
+    let g:multi_cursor_prev_key  = "<c-k>"
+    let g:multi_cursor_skip_key  = "<c-x>"
+<    
                                                           *misc-select-expand-region*
                                                                         *misc-format*
                                                              *misc-format-autoformat*
