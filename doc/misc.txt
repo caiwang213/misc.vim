@@ -185,11 +185,27 @@ the results in a split window.
     F                        | Go to the [count]th previous match (see NOTE)
     [count]f{char}{char}     | Invoke |sneak-vertical-scope|
     [count]F{char}{char}     | Invoke backwards |sneak-vertical-scope|
-    {operator}z{char}{char}  | Perform {operator} from the cursor to the next
+    {operator}f{char}{char}  | Perform {operator} from the cursor to the next
                              | occurrence of {char}{char}
-    {operator}Z{char}{char}  | Perform {operator} from the cursor to the 
+    {operator}F{char}{char}  | Perform {operator} from the cursor to the 
                              | previous occurrence of {char}{char}
+    Use `f` for operations; for example, `dfab` deletes from the cursor to the next
+    instance of "ab". `dFab` deletes backwards to the previous instance.
+    `cfab` `cFab` `yfab` and `yFab` also work as expected.
+
                                                                *msic-search-surround*
+    Old text            Command          New text ~
+    Hello world!        ysiw) |or| ysiwb   Hello (world)!   " |b| means |)|
+    Hello world!        ysiw} |or| ysiwB   Hello {world}!   " |B| means |}|
+    Hello world!        yssb             (Hello world!)   " |ss| means one line 
+    Hello world!        ySSB
+                                         {
+                                             Hello world!
+                                         }
+
+    (Hello world!)      ds)  |or| dsb       Hello world!
+
+    (Hello world!)      cs)" |or| csb"      "Hello world!"
                                                                       *misc-complete*
                                                                   *misc-complete-ycm*
 >
