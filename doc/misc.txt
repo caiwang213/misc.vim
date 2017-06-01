@@ -22,7 +22,7 @@ the results in a split window.
 |misc-search|
 |misc-search-incsearch|
 |misc-search-sneak|
-|msic-search-surround|
+|misc-search-surround|
 |misc-complete|
 |misc-complete-ycm|
 |misc-complete-ultisnips|
@@ -193,7 +193,7 @@ the results in a split window.
     instance of "ab". `dFab` deletes backwards to the previous instance.
     `cfab` `cFab` `yfab` and `yFab` also work as expected.
 
-                                                               *msic-search-surround*
+                                                               *misc-search-surround*
     Old text            Command          New text ~
     Hello world!        ysiw) |or| ysiwb   Hello (world)!   " |b| means |)|
     Hello world!        ysiw} |or| ysiwB   Hello {world}!   " |B| means |}|
@@ -237,6 +237,22 @@ the results in a split window.
     mb                        | /**
                               | * comment
                               | */
+    ------------------------- | ----------------------------------------------
+
+                            *misc-ultisnips-file*
+    mf                        | 
+                              |  /**
+                              |   * @file      c2sdk.h
+                              |   * @copyright Copyright (c) 2017, UT Technology Co., Ltd. All Rights Reserved.
+                              |   * @brief     brief
+                              |   * @author    caiwang213@qq.com
+                              |   * @date      2017-05-31 11:32:59
+                              |   *
+                              |   * @note
+                              |   *  cross platform client sdk interface defines.
+                              |   */
+    ------------------------- | ----------------------------------------------
+    mfile                     | 
     ------------------------- | ----------------------------------------------
 
                              *misc-ultisnips-date*
